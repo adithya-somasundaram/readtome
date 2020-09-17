@@ -22,6 +22,18 @@ class Entry extends StatefulWidget {
 
 class _EntryState extends State<Entry> {
 
+  showMessage(BuildContext context){
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(widget.title),
+          content: Text(widget.message)
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -64,7 +76,7 @@ class _EntryState extends State<Entry> {
                     text: widget.message,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        print(widget.message);
+                        showMessage(context);
                       }
                   )
                 ]
