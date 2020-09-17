@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:string_validator/string_validator.dart';
 
 class Entry extends StatefulWidget {
   Entry({Key key, this.title, this.message}) : super(key: key);
@@ -21,21 +22,49 @@ class Entry extends StatefulWidget {
 }
 
 class _EntryState extends State<Entry> {
-
-  showMessage(BuildContext context){
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(widget.title),
-          content: Text(widget.message)
-        );
+  _showDefinition(BuildContext context, String word) {
+    if (!isAlpha(word)) {
+      while (!isAlpha(word[0])) {
+        word = word.substring(1);
       }
+      while (!isAlpha(word[word.length - 1])) {
+        word = word.substring(0, word.length - 1);
+      }
+    }
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Text(word), content: Text('definition here'));
+        });
+  }
+
+  _displayWord(BuildContext context, String word) {
+    if (word == " " || word =="\n" || word == "\r" || word == "\t"){
+      return TextSpan(
+        text: word
+      );
+    }
+    return TextSpan(
+        text: word,
+        recognizer: TapGestureRecognizer()
+          ..onTap = () {
+            _showDefinition(context, word);
+          }
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    var test2 = widget.message.split(RegExp(r"((?<=\s)|(?=\s))"));
+    print(test2);
+    // RegExp exp = new RegExp(r"(\w+)");
+    // String str = "Parse my string";
+    // Iterable<RegExpMatch> matches = exp.allMatches(widget.message);
+    // matches.forEach((m)=>print(m.group(0)));
+    var test = ['hi', 'there'];
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -48,49 +77,31 @@ class _EntryState extends State<Entry> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            RichText(
-              text: TextSpan(
+      body:
+          Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+        RichText(
+            text: TextSpan(
                 style: TextStyle(color: Colors.black, fontSize: 20),
                 children: <TextSpan>[
-                  TextSpan(
-                    text: widget.message,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        showMessage(context);
-                      }
-                  )
-                ]
+              for (var i in test2) _displayWord(context, i)
+            ]))
+      ]
+
+              // <Widget>[
+              //   RichText(
+              //     text: TextSpan(
+              //         style: TextStyle(color: Colors.black, fontSize: 20),
+              //         children: <TextSpan>[
+              //           TextSpan(
+              //               text: widget.message,
+              //               recognizer: TapGestureRecognizer()
+              //                 ..onTap = () {
+              //                   _showDefinition(context);
+              //                 })
+              //         ]),
+              //   )
+              // ],
               ),
-              
-            )
-          ],
-        ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
