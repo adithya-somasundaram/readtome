@@ -23,6 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String temp = "The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo.";
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Entry(title: 'Entry 1', message: 'hello')
+                    builder: (context) => Entry(title: 'Entry 1', message: temp)
                   )
                 );
               },
