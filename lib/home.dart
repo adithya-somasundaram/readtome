@@ -54,13 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.start,
-          children: 
-          <Widget>[
+          children: <Widget>[
             GestureDetector(
               onTap: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Entry(title: 'Entry 1')
+                    builder: (context) => Entry(title: 'Entry 1', message: 'hello')
                   )
                 );
               },

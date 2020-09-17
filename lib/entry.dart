@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 class Entry extends StatefulWidget {
-  Entry({Key key, this.title}) : super(key: key);
+  Entry({Key key, this.title, this.message}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -13,6 +14,7 @@ class Entry extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final String message;
 
   @override
   _EntryState createState() => _EntryState();
@@ -53,9 +55,22 @@ class _EntryState extends State<Entry> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.start,
-          children: 
-          <Widget>[
-            Text(widget.title)
+          children: <Widget>[
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: Colors.black, fontSize: 20),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: widget.message,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        print(widget.message);
+                      }
+                  )
+                ]
+              ),
+              
+            )
           ],
         ),
       ),
