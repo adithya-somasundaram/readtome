@@ -1,178 +1,100 @@
 {
-    "dictionary":[
-        {
-            "id" : "a",
-            "words" : [
-                {"a" : "1"},
-                {"aloud":"singular of many louds"},
-                {"and" : "&&"},
-                {"active" : "me when I finally get back to running"},
-                {"author" : "me writing this dictionary"},
-                {"at" : "@"}
-            ]
+    "dictionary":{
+        "a" : {
+            "a" : "1",
+            "aloud":"singular of many louds",
+            "and" : "&&",
+            "active" : "me when I finally get back to running",
+            "author" : "me writing this dictionary",
+            "at" : "@"
         },
-        {
-            "id" : "b",
-            "words" : [
-                {"benefit" : "benefit definition here"}
-            ]
+        "b" : {
+            "benefit" : "benefit definition here"
         },
-        {
-            "id" : "c",
-            "words" : [
-                {"confirms" : "I confirm this is the definition of confirm"},
-                {"chair" : "Elephants cannot fit in most chairs :("}
-            ]
+        "c" : {
+            "confirms" : "I confirm this is the definition of confirm",
+            "chair" : "Elephants cannot fit in most chairs :("
         },
-        {
-            "id" : "d",
-            "words" : [
-                {"department" : "there are currently 0 elephants employed at departments worldwide"}
-            ]
+        "d" : {
+            "department" : "there are currently 0 elephants employed at departments worldwide"
         },
-        {
-            "id" : "e",
-            "words" : [
+        "e" : {
 
-            ]
         },
-        {
-            "id" : "f",
-            "words" : [
-                {"found" : "Found the definition for found!"},
-                {"from" : "to you, from me"}
-            ]
+        "f" : {
+            "found" : "Found the definition for found!",
+            "from" : "to you, from me"
         },
-        {
-            "id" : "g",
-            "words" : [
-                {"greatest" : "greater than greater = greatest"}
-            ]
+        "g" : {
+            "greatest" : "greater than greater = greatest"
         },
-        {
-            "id" : "h",
-            "words" : [
+        "h" : {
 
-            ]
         },
-        {
-            "id" : "i",
-            "words" : [
-                {"involvement" : "Fun fact: the word 'involvement' has 11 letters"}
-            ]
+        "i" : {
+            "involvement" : "Fun fact: the word 'involvement' has 11 letters"
         },
-        {
-            "id" : "j",
-            "words" : [
+        "j" : {
 
-            ]
         },
-        {
-            "id" : "k",
-            "words" : [
+        "k" : {
 
-            ]
         },
-        {
-            "id" : "l",
-            "words" : [
-                {"learning" : "what you are doing right now"}
-            ]
+        "l" : {
+            "learning" : "what you are doing right now"
         },
-        {
-            "id" : "m",
-            "words" : [
-                {"memory" : "an elephant is good at this"}
-            ]
+        "m" : {
+            "memory" : "an elephant is good at this"
         },
-        {
-            "id" : "n",
-            "words" : [
+        "n" : {
 
-            ]
         },
-        {
-            "id" : "o",
-            "words" : [
-                {"of" : "of course I will tell you the definition of of. The definition of of is of"}
-            ]
+        "o" : {
+            "of" : "of course I will tell you the definition of of. The definition of of is of"
         },
-        {
-            "id" : "p",
-            "words" : [
-                {"participants" : "those who participate."},
-                {"professor" : "a teacher except cooler"},
-                {"psychology" : "psych!"}
-            ]
+        "p" : {
+            "participants" : "those who participate.",
+            "professor" : "a teacher except cooler",
+            "psychology" : "psych!"
         },
-        {
-            "id" : "q",
-            "words" : [
+        "q" : {
 
-            ]
         },
-        {
-            "id" : "r",
-            "words" : [
-                {"researchers"  : "Definition for researchers"},
-                {"recall" : "I recall entering the definition of recall"},
-                {"read" : "readtome"}
-            ]
+        "r" : {
+            "researchers"  : "Definition for researchers",
+            "recall" : "I recall entering the definition of recall",
+            "read" : "readtome"
         },
-        {
-            "id" : "s",
-            "words" : [
-                {"study" : "what students love"},
-                {"says" : "dog says woof aka hello"}
-            ]
+        "s" : {
+            "study" : "what students love",
+            "says" : "dog says woof aka hello"
         },
-        {
-            "id" : "t",
-            "words" : [
-                {"the" : "Message goes here"},
-                {"that" : "Insert definition here"},
-                {"to" : "2 except not a number"},
-                {"themselves":"yourselves"},
-                {"this" : "no no that! this"}
-            ]
+        "t" : {
+            "the" : "Message goes here",
+            "that" : "Insert definition of that here",
+            "to" : "2 except not a number",
+            "themselves":"yourselves",
+            "this" : "no no that! this"
         },
-        {
-            "id" : "u",
-            "words" : [
-                {"university" : "shout out to ucsc, miss you already :("}
-            ]
+        "u" : {
+            "university" : "shout out to ucsc"
         },
-        {
-            "id" : "v",
-            "words" : [
+        "v" : {
 
-            ]
         },
-        {
-            "id" : "w",
-            "words" : [
-                {"word" : "the word you selected is word"},
-                {"was" : "Adithya was here."},
-                {"when" : "whenwhenwhen"}
-            ]
+        "w" : {
+            "word" : "the word you selected is word",
+            "was" : "Adithya was here.",
+            "when" : "whenwhenwhen"
         },
-        {
-            "id" : "x",
-            "words" : [
+        "x" : {
 
-            ]
         },
-        {
-            "id" : "y",
-            "words" : [
+        "y" : {
 
-            ]
         },
-        {
-            "id" : "z",
-            "words" : [
+        "z" : {
 
-            ]
         }
-    ]
+    }
 }
