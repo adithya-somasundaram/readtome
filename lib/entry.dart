@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
@@ -55,20 +54,19 @@ class _EntryState extends State<Entry> {
           });
   }
 
-  Future<String> _load() async{
+  Future<String> _loadDictionary() async{
     return await rootBundle.loadString("assets/dictionary.json");
   }
 
-  Future _parse() async{
-    String res = await _load();
-    final response = jsonDecode(res);
-    dictionary = response;
+  Future _storeDictionary() async{
+    String result = await _loadDictionary();
+    dictionary = jsonDecode(result);
   }
 
   @override
   void initState(){
     super.initState();
-    _parse();
+    _storeDictionary();
   }
 
 
@@ -76,7 +74,7 @@ class _EntryState extends State<Entry> {
   Widget build(BuildContext context) {
     // split words from other words, including whitespaces
     var text = widget.message.split(RegExp(r"((?<=\s)|(?=\s))"));
-    // print(text);
+    
     return Scaffold(
         appBar: AppBar(
           // set title
