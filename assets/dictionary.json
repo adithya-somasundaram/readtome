@@ -1,0 +1,178 @@
+{
+    "dictionary":[
+        {
+            "id" : "a",
+            "words" : [
+                {"a" : "1"},
+                {"aloud":"singular of many louds"},
+                {"and" : "&&"},
+                {"active" : "me when I finally get back to running"},
+                {"author" : "me writing this dictionary"},
+                {"at" : "@"}
+            ]
+        },
+        {
+            "id" : "b",
+            "words" : [
+                {"benefit" : "benefit definition here"}
+            ]
+        },
+        {
+            "id" : "c",
+            "words" : [
+                {"confirms" : "I confirm this is the definition of confirm"},
+                {"chair" : "Elephants cannot fit in most chairs :("}
+            ]
+        },
+        {
+            "id" : "d",
+            "words" : [
+                {"department" : "there are currently 0 elephants employed at departments worldwide"}
+            ]
+        },
+        {
+            "id" : "e",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "f",
+            "words" : [
+                {"found" : "Found the definition for found!"},
+                {"from" : "to you, from me"}
+            ]
+        },
+        {
+            "id" : "g",
+            "words" : [
+                {"greatest" : "greater than greater = greatest"}
+            ]
+        },
+        {
+            "id" : "h",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "i",
+            "words" : [
+                {"involvement" : "Fun fact: the word 'involvement' has 11 letters"}
+            ]
+        },
+        {
+            "id" : "j",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "k",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "l",
+            "words" : [
+                {"learning" : "what you are doing right now"}
+            ]
+        },
+        {
+            "id" : "m",
+            "words" : [
+                {"memory" : "an elephant is good at this"}
+            ]
+        },
+        {
+            "id" : "n",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "o",
+            "words" : [
+                {"of" : "of course I will tell you the definition of of. The definition of of is of"}
+            ]
+        },
+        {
+            "id" : "p",
+            "words" : [
+                {"participants" : "those who participate."},
+                {"professor" : "a teacher except cooler"},
+                {"psychology" : "psych!"}
+            ]
+        },
+        {
+            "id" : "q",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "r",
+            "words" : [
+                {"researchers"  : "Definition for researchers"},
+                {"recall" : "I recall entering the definition of recall"},
+                {"read" : "readtome"}
+            ]
+        },
+        {
+            "id" : "s",
+            "words" : [
+                {"study" : "what students love"},
+                {"says" : "dog says woof aka hello"}
+            ]
+        },
+        {
+            "id" : "t",
+            "words" : [
+                {"the" : "Message goes here"},
+                {"that" : "Insert definition here"},
+                {"to" : "2 except not a number"},
+                {"themselves":"yourselves"},
+                {"this" : "no no that! this"}
+            ]
+        },
+        {
+            "id" : "u",
+            "words" : [
+                {"university" : "shout out to ucsc, miss you already :("}
+            ]
+        },
+        {
+            "id" : "v",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "w",
+            "words" : [
+                {"word" : "the word you selected is word"},
+                {"was" : "Adithya was here."},
+                {"when" : "whenwhenwhen"}
+            ]
+        },
+        {
+            "id" : "x",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "y",
+            "words" : [
+
+            ]
+        },
+        {
+            "id" : "z",
+            "words" : [
+
+            ]
+        }
+    ]
+}
