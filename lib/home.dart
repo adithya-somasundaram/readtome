@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: new Card(
         child: ListTile(
           title: Text(name),
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: Icon(Icons.keyboard_arrow_right),
         ),
       ),
     );
