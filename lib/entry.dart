@@ -7,6 +7,7 @@ import 'package:string_validator/string_validator.dart';
 class Entry extends StatefulWidget {
   Entry({Key key, this.title, this.message}) : super(key: key);
 
+  // store passed in title and message for entry
   final String title;
   final String message;
 
@@ -15,13 +16,15 @@ class Entry extends StatefulWidget {
 }
 
 class _EntryState extends State<Entry> {
-
+  // vars for dictionary and on/off switch
   var dictionary;
   bool _select = false;
 
   // displays definition of clickable words
   _showDefinition(BuildContext context, String word) {
+    // check for definition if switch is on
     if(_select){
+      // following if statement ignores leading and trailing, nonAlphabet characters
       if (!isAlpha(word)) {
         while (!isAlpha(word[0])) {
           word = word.substring(1);
@@ -30,7 +33,11 @@ class _EntryState extends State<Entry> {
           word = word.substring(0, word.length - 1);
         }
       }
+
+      // get definition from dictionary
       var def = dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
+
+      // show popup text if definition is found
       if (def != null){
         return showDialog(
           context: context,
@@ -45,10 +52,12 @@ class _EntryState extends State<Entry> {
 
   // generates words displayed on screen. Makes non-empty words clickable
   _displayWord(BuildContext context, String word) {
+    // return textspan w/o onTap method if word is blank space
     if (word == " " || word == "\n" || word == "\r" || word == "\t") {
       return TextSpan(text: word);
     }
 
+    // return textspan with word and onTap function
     return TextSpan(
         text: word,
         recognizer: TapGestureRecognizer()
@@ -57,15 +66,18 @@ class _EntryState extends State<Entry> {
           });
   }
 
+  // loads dictionary.json file from assets
   Future<String> _loadDictionary() async{
     return await rootBundle.loadString("assets/dictionary.json");
   }
 
+  // reads dictionary.json file
   Future _storeDictionary() async{
     String result = await _loadDictionary();
     dictionary = jsonDecode(result);
   }
 
+  // init state stores dictionary locally
   @override
   void initState(){
     super.initState();
@@ -90,18 +102,25 @@ class _EntryState extends State<Entry> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 RichText(
-                    text: TextSpan(
-                        // set text style
-                        style: TextStyle(color: Colors.black, fontSize: 20, height: 1.5),
-                        children: <TextSpan>[
-                      for (var i in _text) _displayWord(context, i),
-                    ])),
+                  text: TextSpan(
+                    // set text style
+                    style: TextStyle(color: Colors.black, fontSize: 20, height: 1.5),
+                    children: <TextSpan>[
+                      // call display function for each word in entry message
+                      for (var w in _text) _displayWord(context, w),
+                    ]
+                  )
+                ),
+
+                // expanded and align used to position switch at bottom of screen
                 Expanded(
                   child: Align(
+                    // set position to bottom of screen
                     alignment: FractionalOffset.bottomCenter,
                     child: SwitchListTile(
                       title: Text("Display definition on tap: "),
                       value: _select,
+                      // set _select to new switch val
                       onChanged: (val) {
                         setState(() {
                           _select = val;
@@ -110,7 +129,8 @@ class _EntryState extends State<Entry> {
                     )
                   )
                 ),
-              ]),
-        ));
+              ]
+            ),
+    ));
   }
 }
