@@ -17,26 +17,29 @@ class Entry extends StatefulWidget {
 class _EntryState extends State<Entry> {
 
   var dictionary;
+  bool _select = false;
 
   // displays definition of clickable words
   _showDefinition(BuildContext context, String word) {
-    if (!isAlpha(word)) {
-      while (!isAlpha(word[0])) {
-        word = word.substring(1);
-      }
-      while (!isAlpha(word[word.length - 1])) {
-        word = word.substring(0, word.length - 1);
-      }
-    }
-    var def = dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
-    if (def != null){
-      return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              title: Text(word), content: Text(def));
+    if(_select){
+      if (!isAlpha(word)) {
+        while (!isAlpha(word[0])) {
+          word = word.substring(1);
         }
-      );
+        while (!isAlpha(word[word.length - 1])) {
+          word = word.substring(0, word.length - 1);
+        }
+      }
+      var def = dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
+      if (def != null){
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+                title: Text(word), content: Text(def));
+          }
+        );
+      }
     }
   }
 
@@ -69,11 +72,10 @@ class _EntryState extends State<Entry> {
     _storeDictionary();
   }
 
-
   @override
   Widget build(BuildContext context) {
     // split words from other words, including whitespaces
-    var text = widget.message.split(RegExp(r"((?<=\s)|(?=\s))"));
+    var _text = widget.message.split(RegExp(r"((?<=\s)|(?=\s))"));
     
     return Scaffold(
         appBar: AppBar(
@@ -92,8 +94,22 @@ class _EntryState extends State<Entry> {
                         // set text style
                         style: TextStyle(color: Colors.black, fontSize: 20, height: 1.5),
                         children: <TextSpan>[
-                      for (var i in text) _displayWord(context, i)
-                    ]))
+                      for (var i in _text) _displayWord(context, i),
+                    ])),
+                Expanded(
+                  child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: SwitchListTile(
+                      title: Text("Display definition on tap: "),
+                      value: _select,
+                      onChanged: (val) {
+                        setState(() {
+                          _select = val;
+                        });
+                      }
+                    )
+                  )
+                ),
               ]),
         ));
   }
