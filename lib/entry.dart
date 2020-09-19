@@ -20,8 +20,25 @@ class _EntryState extends State<Entry> {
   var dictionary;
   bool _select = false;
 
+  // loads dictionary.json file from assets
+  Future<String> _loadDictionary() async{
+    return await rootBundle.loadString("assets/dictionary.json");
+  }
+
+  // reads dictionary.json file
+  Future _storeDictionary() async{
+    String result = await _loadDictionary();
+    dictionary = jsonDecode(result);
+  }
+
+  // reads dictionary.json and returns inputted word
+  Future<String> _queryWord(word) async {
+    String result = await _loadDictionary();
+    return jsonDecode(result)['dictionary'][word[0]][word];
+  }
+
   // displays definition of clickable words
-  _showDefinition(BuildContext context, String word) {
+  _showDefinition(BuildContext context, String word) async {
     // check for definition if switch is on
     if(_select){
       // following if statement ignores leading and trailing, nonAlphabet characters
@@ -36,6 +53,9 @@ class _EntryState extends State<Entry> {
 
       // get definition from dictionary
       var def = dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
+
+      // following code queries an individual word, rather than read it from stored dictionary, can replace previous line
+      // var def  = await _queryWord(word.toLowerCase());
 
       // show popup text if definition is found
       if (def != null){
@@ -66,18 +86,7 @@ class _EntryState extends State<Entry> {
           });
   }
 
-  // loads dictionary.json file from assets
-  Future<String> _loadDictionary() async{
-    return await rootBundle.loadString("assets/dictionary.json");
-  }
-
-  // reads dictionary.json file
-  Future _storeDictionary() async{
-    String result = await _loadDictionary();
-    dictionary = jsonDecode(result);
-  }
-
-  // init state stores dictionary locally
+  // init state reads and stores dictionary.json locally
   @override
   void initState(){
     super.initState();
@@ -99,36 +108,50 @@ class _EntryState extends State<Entry> {
           padding: EdgeInsets.all(15),
           child: Column(
             // set start point for text
-              mainAxisAlignment: MainAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                RichText(
-                  text: TextSpan(
-                    // set text style
-                    style: TextStyle(color: Colors.black, fontSize: 20, height: 1.5),
-                    children: <TextSpan>[
-                      // call display function for each word in entry message
-                      for (var w in _text) _displayWord(context, w),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: RichText(
+                      text: TextSpan(
+                        // set text style
+                        style: TextStyle(color: Colors.black, fontSize: 20, height: 1.5),
+                        children: <TextSpan>[
+                          // call display function for each word in entry message
+                          for (var w in _text) _displayWord(context, w),
+                        ]
+                      )
+                    )
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.lightGreen[100],
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Align(
+                          // set position to bottom of screen
+                          alignment: FractionalOffset.bottomCenter,
+                          child: SwitchListTile(
+                            
+                            title: Text("Display definition on tap: "),
+                            value: _select,
+                            // set _select to new switch val
+                            onChanged: (val) {
+                              setState(() {
+                                _select = val;
+                              });
+                            }
+                          )
+                        )
+                      )
                     ]
                   )
-                ),
-
+                )
                 // expanded and align used to position switch at bottom of screen
-                Expanded(
-                  child: Align(
-                    // set position to bottom of screen
-                    alignment: FractionalOffset.bottomCenter,
-                    child: SwitchListTile(
-                      title: Text("Display definition on tap: "),
-                      value: _select,
-                      // set _select to new switch val
-                      onChanged: (val) {
-                        setState(() {
-                          _select = val;
-                        });
-                      }
-                    )
-                  )
-                ),
+                
               ]
             ),
     ));
