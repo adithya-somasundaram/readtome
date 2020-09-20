@@ -20,14 +20,17 @@ class _EntryState extends State<Entry> {
   var dictionary;
   bool _select = false;
 
+  /* --- Test function --- */
 
   _testDictionary(){
+    // all keys to be tested
     var _testEntries = ["a", "aloud", "and", "active", "author", "at", "benefit", 
     "confirms", "chair", "department", "found", "from", "greatest", "involvement",
     "learning", "memory", "of", "participants", "professor", "psychology", "researchers",
     "recall", "read", "study", "says", "the", "that", "to", "themselves", "this",
     "university", "word", "was", "when"];
 
+    // all key,value pairs to be checked
     var _testResults = {
       "a" : "1",
       "aloud":"singular of many louds",
@@ -73,6 +76,9 @@ class _EntryState extends State<Entry> {
     }
     print('Dictionary test cases pass!');
   }
+  /* ------------------------------ */
+
+  /* --- JSON related functions --- */
 
   // loads dictionary.json file from assets
   Future<String> _loadDictionary() async{
@@ -93,6 +99,9 @@ class _EntryState extends State<Entry> {
     String result = await _loadDictionary();
     return jsonDecode(result)['dictionary'][word[0]][word];
   }
+  /* ------------------------------ */
+
+  /* --- Popup window function --- */
 
   // displays definition of clickable words
   _showDefinition(BuildContext context, String word) async {
@@ -127,6 +136,9 @@ class _EntryState extends State<Entry> {
       }
     }
   }
+  /* ------------------------------ */
+
+  /* --- Build related functions --- */
 
   // generates words displayed on screen. Makes non-empty words clickable
   _displayWord(BuildContext context, String word) {
@@ -214,4 +226,5 @@ class _EntryState extends State<Entry> {
             ),
     ));
   }
+  /* --------------------------------- */
 }

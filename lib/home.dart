@@ -15,11 +15,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  /* --- Test function --- */
+
   _testDictionary() async{
     var dictionary = await _storeEntries();
 
+    // all entry names to be tested
     var testEntries = ["main entry", "long entry"];
 
+    // all entries to be tested
     var testResults = [
       "The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo.",
       "The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo. The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo."
@@ -32,6 +36,9 @@ class _HomeState extends State<Home> {
     }
     print('Entries test cases pass!');
   }
+  /* ------------------------------ */
+
+  /* --- JSON related functions --- */
 
   // loads data from passages.json
   Future<String> _loadEntries() async {
@@ -43,6 +50,9 @@ class _HomeState extends State<Home> {
     String result = await _loadEntries();
     return jsonDecode(result);
   }
+  /* ------------------------------ */
+
+  /* --- Build related functions --- */
 
   // returns card wrapped in gestureDector to sense onTap
   _displayEntry(name, msg) {
@@ -64,7 +74,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // Uncomment next line to test dictionary read
+    // // Uncomment next line to test dictionary read
     // _testDictionary();
     return Scaffold(
       appBar: AppBar(
@@ -99,4 +109,5 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  /* ----------------------------------------- */
 }
