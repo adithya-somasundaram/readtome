@@ -17,7 +17,7 @@ class Entry extends StatefulWidget {
 
 class _EntryState extends State<Entry> {
   // vars for dictionary and on/off switch
-  var dictionary;
+  var _dictionary;
   bool _select = false;
 
   /* --- Test function --- */
@@ -69,7 +69,7 @@ class _EntryState extends State<Entry> {
     };
 
     for(var k in _testEntries){
-      if (_testResults[k] != dictionary["dictionary"][k[0]][k]){
+      if (_testResults[k] != _dictionary["dictionary"][k[0]][k]){
         print('Test error at key: ' + k);
         return;
       }
@@ -88,7 +88,7 @@ class _EntryState extends State<Entry> {
   // reads dictionary.json file
   Future _storeDictionary() async{
     String result = await _loadDictionary();
-    dictionary = jsonDecode(result);
+    _dictionary = jsonDecode(result);
 
     // Uncomment below to run dictionary test
     // _testDictionary();
@@ -118,7 +118,7 @@ class _EntryState extends State<Entry> {
       }
 
       // get definition from dictionary
-      var def = dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
+      var def = _dictionary['dictionary'][word.toLowerCase()[0]][word.toLowerCase()];
 
       /* following code queries an individual word, rather than read it from stored 
       dictionary, can replace previous line */
@@ -205,8 +205,7 @@ class _EntryState extends State<Entry> {
                           // set position to bottom of screen
                           alignment: FractionalOffset.bottomCenter,
                           child: SwitchListTile(
-                            
-                            title: Text("Display definition on tap: "),
+                            title: Text("Display word definition on tap: "),
                             value: _select,
                             // set _select to new switch val
                             onChanged: (val) {
