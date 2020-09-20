@@ -4,10 +4,14 @@ import './home.dart';
 import './entry.dart';
 
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+
+  Widget _createTest({Widget input}){
+    return MaterialApp(home: input);
+  }
 
   testWidgets("Testing home screen", (WidgetTester test) async {
-    await test.pumpWidget(MyHomePage(title: 'Read to Me'));
+    await test.pumpWidget(_createTest(input: Home(title: 'Read to Me')));
 
     final titleFind = find.text('Read to Me');
 
@@ -15,13 +19,15 @@ void main() {
   });
 
   testWidgets("Testing entry screen", (WidgetTester test) async {
-    await test.pumpWidget(Entry(title: 'test', message: 'test message'));
+    await test.pumpWidget(_createTest(input: Entry(title: 'test', message: 'testing\nmessage')));
 
     final titleFind = find.text('test');
-    final messageFind = find.text('test message');
+    // final testingFind = find.text('testing');
+    // final messageFind = find.text('message');
 
     expect(titleFind, findsOneWidget);
-    expect(messageFind, findsOneWidget);
+    // expect(testingFind, findsOneWidget);
+    // expect(messageFind, findsOneWidget);
   });
 
 }
@@ -36,7 +42,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Read to Me'),
+      home: Home(title: 'Read to Me'),
     );
   }
 }
