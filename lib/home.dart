@@ -88,8 +88,16 @@ class _HomeState extends State<Home> {
             List<Widget> result;
             if (snapshot.hasData) {
               result = <Widget>[
-                for (var e in snapshot.data['entries'])
-                  _displayEntry(e['name'], e['passage'])
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        for (var e in snapshot.data['entries'])
+                          _displayEntry(e['name'], e['passage'])
+                      ]
+                    )
+                  )
+                )
               ];
             } else if (snapshot.hasError) {
               result = <Widget>[
