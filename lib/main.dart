@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import './home.dart';
+import './entry.dart';
 
 void main() {
   runApp(MyApp());
+
+  testWidgets("Testing home screen", (WidgetTester test) async {
+    await test.pumpWidget(MyHomePage(title: 'Read to Me'));
+
+    final titleFind = find.text('Read to Me');
+
+    expect(titleFind, findsOneWidget);
+  });
+
+  testWidgets("Testing entry screen", (WidgetTester test) async {
+    await test.pumpWidget(Entry(title: 'test', message: 'test message'));
+
+    final titleFind = find.text('test');
+    final messageFind = find.text('test message');
+
+    expect(titleFind, findsOneWidget);
+    expect(messageFind, findsOneWidget);
+  });
+
 }
 
 class MyApp extends StatelessWidget {
