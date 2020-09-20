@@ -14,6 +14,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  _testDictionary() async{
+    var dictionary = await _storeEntries();
+
+    var testEntries = ["main entry", "long entry"];
+
+    var testResults = [
+      "The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo.",
+      "The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo. The researchers found that word recall was greatest when the participants read aloud to themselves.\n\n“This study confirms that learning and memory benefit from active involvement,” says study author Colin M. MacLeod, a professor and chair of the Department of Psychology at the University of Waterloo."
+    ];
+
+    for(int i = 0; i < testEntries.length; i++){
+      if(dictionary['entries'][i]['name'] != testEntries[i] || dictionary['entries'][i]['passage'] != testResults[i]){
+        print('Test error at key: ' + testEntries[i]);
+      }
+    }
+    print('Entries test cases pass!');
+  }
+
   // loads data from passages.json
   Future<String> _loadEntries() async {
     return await rootBundle.loadString("assets/passages.json");
@@ -45,6 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Uncomment next line to test dictionary read
+    // _testDictionary();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
