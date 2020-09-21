@@ -106,7 +106,7 @@ class _EntryState extends State<Entry> {
   // displays definition of clickable words
   _showDefinition(BuildContext context, String word) async {
     // check for definition if switch is on
-    if(_select){
+    if(_select && _dictionary != null){
       // following if statement ignores leading and trailing, nonAlphabet characters
       if (!isAlpha(word)) {
         while (!isAlpha(word[0])) {
